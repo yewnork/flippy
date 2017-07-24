@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CoinFlip;
+use App\CoinFlipsSeries;
 
 class FlipController extends Controller
 {
@@ -14,9 +15,9 @@ class FlipController extends Controller
      */
     public function index()
     {
-        $flip_result = "";
+        $flip = new CoinFlip;
         $flips = CoinFlip::all();
-        return view('flip',compact('flip_result','flips'));
+        return view('flip',compact('flip','flips'));
     }
 
     /**
@@ -38,12 +39,9 @@ class FlipController extends Controller
     public function store(Request $request)
     {
         
-        $flip = new CoinFlip;
-        $flip->flip();
-        $flip->save();
-        $flip_result = $flip->result;
+        $flip = CoinFlip::flip();
         $flips = CoinFlip::all();
-        return view('flip', compact('flip_result','flips'));
+        return view('flip', compact('flip','flips'));
     }
 
     /**
@@ -55,6 +53,19 @@ class FlipController extends Controller
     public function show(CoinFlip $coinFlip)
     {
         return view('show_flip', compact('coinFlip'));
+    }
+
+    public function makeseries(CoinFlip $coinFlip)
+    {
+        $result = $coinFlip->createSeries();
+        if(!$result){
+            dd('Already assigned to a series');
+        }
+        echo "success";
+        // $coinFlipSeries = new CoinFlipSeries;
+        // $coinFlipSeries->save();
+        // $coinFlip->coinflipseries()->associate($coinFlipSeries);
+        // $coinFlip->save();
     }
 
     // *

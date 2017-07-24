@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCoinFlipSeriesTable extends Migration
+class CreateCoinFlipsSeriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCoinFlipSeriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('coin_flip_series', function (Blueprint $table) {
+        Schema::create('coin_flips_series', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateCoinFlipSeriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coin_flip_series');
+        Schema::dropIfExists('coin_flips_series');
     }
 }

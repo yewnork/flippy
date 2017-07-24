@@ -17,8 +17,8 @@ class CreateCoinFlipsTable extends Migration
             $table->increments('id');
             $table->string('result');
           
-            $table->integer('coinflipseries_id')->unsigned();
-            $table->foreign('coinflipseries_id')->references('id')->on('coin_flip_series');
+            $table->integer('coin_flips_series_id')->unsigned()->nullable();
+            $table->foreign('coin_flips_series_id')->references('id')->on('coin_flips_series');
           
             $table->timestamps();
         });

@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CoinFlipSeries extends Model
+class CoinFlipsSeries extends Model
 {
     //
   
-    function coinflips(){
+    function coin_flips(){
       return $this->hasMany('App\CoinFlip');
     }
 }

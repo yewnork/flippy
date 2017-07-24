@@ -19,8 +19,14 @@ Route::get('test', function(){
   dd($outcomes[1]);
 });
 
-Route::get('/', 'FlipController@index')->name('showFlipPage');
+Route::get('/', 'FlipController@index')->name('coinFlipMain');
 
-Route::post('/', 'FlipController@store')->name('performFlip');
+Route::post('/', 'FlipController@store')->name('coinFlip');
 
-Route::get('flip/{coinFlip}', 'FlipController@show')->name('showFlipResult');
+Route::get('flip/{coinFlip}', 'FlipController@show')->name('coinFlipResult');
+
+Route::post('flip/{coinFlip}/make', 'FlipController@makeseries')->name('coinFlipMakeSeries');
+
+
+Route::get('series/{coinFlipsSeries}', 'CoinFlipsSeriesController@show')->name('coinFlipsSeries'); 
+Route::post('series/{coinFlipsSeries}', 'CoinFlipsSeriesController@addCoinFlip')->name('createCoinFlipOnSeries');
